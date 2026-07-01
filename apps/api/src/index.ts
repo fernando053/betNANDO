@@ -11,8 +11,8 @@ import betRoutes from './routes/bet.routes';
 import rankingRoutes from './routes/ranking.routes';
 import notificationRoutes from './routes/notification.routes';
 import adminRoutes from './routes/admin.routes';
-import { startMatchSync } from './jobs/syncMatches';
-import { startBetSettlement } from './jobs/settleBets';
+import { matchService } from './services/match.service';
+import { betService } from './services/bet.service';
 import { env } from './config/env';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
@@ -55,6 +55,42 @@ const authLimiter = rateLimit({
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/register', authLimiter);
 
+// Cron endpoints (protected by CRON_SECRET)
+let syncRunning = false;
+let settleRunning = false;
+
+app.get('/api/cron/sync', async (req: Request, res: Response) => {
+  if (req.headers.authorization !== `Bearer ${env.CRON_SECRET}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  if (syncRunning) return res.status(409).json({ error: 'Already running' });
+  syncRunning = true;
+  try {
+    const count = await matchService.syncMatches();
+    res.json({ ok: true, synced: count });
+  } catch (error) {
+    res.status(500).json({ error: 'Sync failed' });
+  } finally {
+    syncRunning = false;
+  }
+});
+
+app.get('/api/cron/settle', async (req: Request, res: Response) => {
+  if (req.headers.authorization !== `Bearer ${env.CRON_SECRET}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  if (settleRunning) return res.status(409).json({ error: 'Already running' });
+  settleRunning = true;
+  try {
+    await betService.settlePendingBets();
+    res.json({ ok: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Settlement failed' });
+  } finally {
+    settleRunning = false;
+  }
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/groups', groupRoutes);
@@ -73,7 +109,6 @@ app.get('/api/health', (_req, res) => {
 const webDistPath = join(__dirname, '../../web/dist');
 if (existsSync(webDistPath)) {
   app.use(express.static(webDistPath));
-  // Client-side routing fallback: serve index.html for non-API routes
   app.get('*', (req, res) => {
     if (!req.path.startsWith('/api')) {
       res.sendFile(join(webDistPath, 'index.html'));
@@ -87,11 +122,8 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// Handle unhandled rejections
 process.on('unhandledRejection', (reason) => {
   console.error('Unhandled rejection:', reason);
-  // Exit after a short delay to allow logging
-  setTimeout(() => process.exit(1), 1000);
 });
 
 process.on('uncaughtException', (err) => {
@@ -99,11 +131,11 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`API server running on port ${PORT}`);
-  console.log(`Network: http://0.0.0.0:${PORT}`);
-  startMatchSync();
-  startBetSettlement();
-});
+// Start server only when not running on Vercel (serverless)
+if (!process.env.VERCEL) {
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`API server running on port ${PORT}`);
+  });
+}
 
 export default app;

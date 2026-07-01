@@ -7,6 +7,7 @@ export const env = {
   PORT: parseInt(process.env.PORT || '3001'),
   FOOTBALL_DATA_API_KEY: process.env.FOOTBALL_DATA_API_KEY || '',
   FRONTEND_URL: process.env.FRONTEND_URL || 'http://localhost:5173',
+  CRON_SECRET: process.env.CRON_SECRET || '',
 };
 
 export const registerSchema = z.object({
