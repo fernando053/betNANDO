@@ -10,10 +10,30 @@
 [![Node.js](https://img.shields.io/badge/Node.js-20-339933.svg)](https://nodejs.org/)
 [![Prisma](https://img.shields.io/badge/Prisma-5.14-2D3748.svg)](https://www.prisma.io/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-06B6D4.svg)](https://tailwindcss.com/)
+[![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000.svg)](https://vercel.com)
+[![Supabase](https://img.shields.io/badge/Database-Supabase-3FCF8E.svg)](https://supabase.com)
 
 **Bet with virtual credits on real football matches. Compete with friends, climb the rankings, and prove you're the smartest bettor in the group.**
 
 [🚀 Deploy](#-deploy-100-grátis) | [📖 Docs](#-api-endpoints) | [🎯 Features](#-features) | [🛠️ Tech Stack](#-tech-stack)
+
+---
+
+### 🏷️ Tags
+
+```
+#football #soccer #betting #fantasy #virtualbetting #sports #react #nodejs #typescript #prisma #postgresql #tailwindcss #express #vite #vercel #supabase #openSource #webdev #fullstack #saas #portfolio #project #api #restapi #jwt #authentication #frontend #backend #devops #docker
+```
+
+### 🔍 SEO Keywords
+
+```
+football betting app, soccer betting platform, virtual betting, friend group betting,
+react betting app, nodejs betting api, typescript betting platform, fantasy football,
+sports betting react, betting web app, prisma postgresql, fullstack betting app,
+free betting platform, open source betting, football predictions, match betting,
+bet slip app, sports analytics, football statistics, group competition
+```
 
 </div>
 
@@ -469,15 +489,124 @@ cd apps/api && npx vitest
 
 ---
 
-## 📄 License
+<div align="center">
 
-MIT License - see [LICENSE](LICENSE) for details.
+## 🌟 Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=fernando053/betleague&type=Date)](https://star-history.com/#fernando053/betleague&Date)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues and pull requests.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+
+![GitHub stars](https://img.shields.io/github/stars/fernando053/betleague?style=social)
+![GitHub forks](https://img.shields.io/github/forks/fernando053/betleague?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/fernando053/betleague?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/fernando053/betleague)
+![GitHub issues](https://img.shields.io/github/issues/fernando053/betleague)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/fernando053/betleague)
+
+</div>
+
+---
+
+## 📢 Share This Project
+
+If you found this project useful, please give it a ⭐ and share it!
+
+**Share on Twitter/X:**
+```
+⚽ Check out BetLeague - a virtual football betting platform for friend groups!
+
+🔥 Features:
+• Bet with virtual credits
+• Multiple betting markets
+• Group competitions
+• Live rankings
+
+Built with React + Node.js + PostgreSQL
+
+#football #betting #react #nodejs #typescript #opensource #webdev #fullstack
+```
+
+**Share on LinkedIn:**
+```
+🚀 Excited to share BetLeague - a full-stack virtual football betting platform!
+
+Tech Stack:
+⚛️ React 18 + TypeScript
+🟢 Node.js + Express
+🗄️ PostgreSQL + Prisma
+🎨 Tailwind CSS
+🚀 Deployed on Vercel
+
+100% free and open source! Check it out 👇
+
+#football #betting #react #nodejs #typescript #prisma #postgresql #fullstack #webdev #opensource
+```
+
+---
+
+## 🎯 Roadmap
+
+- [ ] Real-time match updates with WebSockets
+- [ ] Live betting during matches
+- [ ] Push notifications
+- [ ] Mobile app (React Native)
+- [ ] AI-powered betting tips
+- [ ] Multi-language support (PT, EN, ES)
+- [ ] Dark/Light theme toggle
+- [ ] Export betting history to CSV/PDF
+- [ ] Integration with more football APIs
+- [ ] Tournament mode with brackets
+
+---
+
+## 💡 Ideas for Improvement
+
+Have ideas? Open an [issue](https://github.com/fernando053/betleague/issues) or submit a PR!
+
+---
+
+## 📜 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
+
+---
+
+## ⚠️ Disclaimer
+
+This is a **virtual betting platform** for educational and entertainment purposes only. No real money is involved. Please bet responsibly.
 
 ---
 
 <div align="center">
 
-**Made with ⚽ for football friends**
+### 🙏 Support
+
+If you like this project, consider:
+- ⭐ Starring the repo
+- 🐛 Reporting bugs
+- 💡 Suggesting features
+- 🤝 Contributing code
+
+---
+
+**Made with ⚽ and ❤️ for football friends worldwide**
 
 [⬆ Back to Top](#-betleague)
 
